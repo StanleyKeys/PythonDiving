@@ -46,7 +46,6 @@ def chooseMenu():  # Главное меню
 			chooseMenu()
 
 
-
 def addCash():  # Метод добавления средств
 	cash = input("На какую сумму вы хотите пополнить: \n")
 	atm.add(int(cash))
@@ -142,9 +141,10 @@ class ATM:
 		if (self._TOTAL_INCOME >= 5000000):
 			taxAction = round(self._BALANCE * self._TAX, 1)
 			self._BALANCE -= taxAction
-			print(f"*** ВНИМАНИЕ *** \nВаша общая прибыль  от {self._DateOfFirstAction} составила {self._TOTAL_INCOME} у.е. \n"
-			      "Согласно ст. №214-ФЗ, №362-ФЗ НК РФ 'О Порядке исчисления суммы налога на богаство' \n"
-			      f"С вас было удержано 10% от суммы общего дохода = {taxAction} y.e. \n")
+			print(
+				f"*** ВНИМАНИЕ *** \nВаша общая прибыль  от {self._DateOfFirstAction} составила {self._TOTAL_INCOME} у.е. \n"
+				"Согласно ст. №214-ФЗ, №362-ФЗ НК РФ 'О Порядке исчисления суммы налога на богаство' \n"
+				f"С вас было удержано 10% от суммы общего дохода = {taxAction} y.e. \n")
 
 	def checkDate(self):  # Проверка текущей даты с датой первого действия по счету (необходимо для сброса TOTAL_INCOME)
 		current_date = date.today()
