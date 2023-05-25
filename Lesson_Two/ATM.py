@@ -41,6 +41,10 @@ def chooseMenu():  # Главное меню
 			withdrawCash()
 		case '3':
 			exitATM()
+		case _:
+			print("Необходимо выбрать пункт меню \n")
+			chooseMenu()
+
 
 
 def addCash():  # Метод добавления средств
@@ -138,7 +142,7 @@ class ATM:
 		if (self._TOTAL_INCOME >= 5000000):
 			taxAction = round(self._BALANCE * self._TAX, 1)
 			self._BALANCE -= taxAction
-			print(f"Ваша общая прибыль составила {self._TOTAL_INCOME} у.е. \n"
+			print(f"*** ВНИМАНИЕ *** \nВаша общая прибыль  от {self._DateOfFirstAction} составила {self._TOTAL_INCOME} у.е. \n"
 			      "Согласно ст. №214-ФЗ, №362-ФЗ НК РФ 'О Порядке исчисления суммы налога на богаство' \n"
 			      f"С вас было удержано 10% от суммы общего дохода = {taxAction} y.e. \n")
 
