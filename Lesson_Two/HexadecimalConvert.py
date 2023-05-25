@@ -14,7 +14,7 @@ def userInput():  # Ввод
 		return userInput()
 
 
-def toHex(a):
+def toHex(a): # Математический способ
 	s = ""
 	result = "0x"
 	while True:
