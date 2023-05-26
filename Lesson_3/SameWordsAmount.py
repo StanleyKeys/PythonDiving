@@ -12,7 +12,7 @@ text = "Викинги - раннесредневековые скандинав
 
 
 def clearText(text: str):  # Метод очистки текста от пунктуации.
-	text = text.replace(',', '').replace('.', '').replace('-', '')
+	text = text.replace(',', '').replace('.', '').replace('-', '').replace('(','').replace(')','')
 	return text
 
 
