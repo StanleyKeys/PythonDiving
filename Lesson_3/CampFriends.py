@@ -51,7 +51,7 @@ def showDict(dict):  # Красивый вывод словаря
 
 
 def searchUnicItems(friendsAmount):  # Метод возвращает новый словарь с друзьями и НЕвзятыми вещами у каждого.
-	unicItems = friendsDict
+	unicItems = friendsDict.copy()
 	counter = 1
 	while (counter <= friendsAmount):
 		tempList = unicItems[f'Друг № {counter}']
@@ -68,6 +68,7 @@ def mainMethod():
 	friendsAmount = int(userInput())
 	fillFriendsDict(friendsAmount)
 	# showDict(friendsDict)
+	print(friendsDict)
 	unicDict = searchUnicItems(friendsAmount)
 	showDict(unicDict)
 
