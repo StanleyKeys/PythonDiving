@@ -18,8 +18,6 @@ from datetime import datetime
 logList = {}
 
 
-
-
 def userInput():  # Ввод
 	userEnter = input("Input the number: ")
 	if (userEnter.isdigit()):
@@ -157,6 +155,7 @@ class ATM:
 				"Согласно ст. №214-ФЗ, №362-ФЗ НК РФ 'О Порядке исчисления суммы налога на богаство' \n"
 				f"С вас было удержано 10% от суммы общего дохода = {taxAction} y.e. \n")
 			logList[getTimeNow()] = (f"Снятие со счета {taxAction} y.e.(Налоговые сборы) ")
+
 	def checkDate(self):  # Проверка текущей даты с датой первого действия по счету (необходимо для сброса TOTAL_INCOME)
 		current_date = date.today()
 		if (self._DateOfFirstAction == 0):
@@ -166,15 +165,19 @@ class ATM:
 			self._DateOfFirstAction = date.today()
 			self._TOTAL_INCOME = 0
 
-def getTimeNow():       # Метод получает время для логов
+
+def getTimeNow():  # Метод получает время для логов
 	currTime = datetime.now()
 	time = f"{currTime.day}.{currTime.month}.{currTime.year}, {currTime.hour}:{currTime.minute}:{currTime.second}"
 	return time
-def showlogs(): # Метод отображающий логи
+
+
+def showlogs():  # Метод отображающий логи
 	print("*** История операций: ***")
 	for log in logList:
 		print(f'{log} - {logList[log]}')
 	chooseMenu()
+
 
 def mainMethod():
 	chooseMenu()
