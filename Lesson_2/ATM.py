@@ -13,6 +13,11 @@
 import sys
 import time
 from datetime import date
+from datetime import datetime
+
+logList = {}
+
+
 
 
 def userInput():  # Ввод
@@ -33,13 +38,16 @@ def chooseMenu():  # Главное меню
 	choice = input("Выберите действие \n"
 	               "1. Пополнить Баланс \n"
 	               "2. Снять наличные \n"
-	               "3. Выход \n")
+	               "3. История \n"
+	               "4. Выход \n")
 	match (choice):
 		case '1':
 			addCash()
 		case '2':
 			withdrawCash()
 		case '3':
+			showlogs()
+		case '4':
 			exitATM()
 		case _:
 			print("Необходимо выбрать пункт меню \n")
@@ -76,6 +84,7 @@ class ATM:
 			self._BALANCE += cash
 			self._TOTAL_INCOME += cash
 			print("--- Денежные средства успешно зачислены на счет --- \n")
+			logList[getTimeNow()] = (f"Пополение счета на {cash} y.e. ")
 			self._addBonus()
 			self._checkTotalIncome()
 			chooseMenu()
@@ -99,6 +108,7 @@ class ATM:
 				if (cash <= self._BALANCE):
 					self._BALANCE -= cash
 					print("--- Денежные средства успешно сняты со счета --- \n")
+					logList[getTimeNow()] = (f"Сянтие со счета {cash} y.e. ")
 				else:
 					print("Сумма снятия с учетом комиссии превышает текущий баланс. \n"
 					      "Попробуйте изменить сумму снятия \n")
@@ -135,6 +145,7 @@ class ATM:
 			self._BALANCE += actionBonus
 			self._TOTAL_INCOME += actionBonus
 			print(f"За активность по вашему счету Вам было начислено {actionBonus} y.e. \n")
+			logList[getTimeNow()] = (f"Зачисление бонусов - {actionBonus} y.e.")
 			self._BONUS_COUNTER = 0
 
 	def _checkTotalIncome(self):  # Подсчет общей прибыли за месяц
@@ -145,7 +156,7 @@ class ATM:
 				f"*** ВНИМАНИЕ *** \nВаша общая прибыль  от {self._DateOfFirstAction} составила {self._TOTAL_INCOME} у.е. \n"
 				"Согласно ст. №214-ФЗ, №362-ФЗ НК РФ 'О Порядке исчисления суммы налога на богаство' \n"
 				f"С вас было удержано 10% от суммы общего дохода = {taxAction} y.e. \n")
-
+			logList[getTimeNow()] = (f"Снятие со счета {taxAction} y.e.(Налоговые сборы) ")
 	def checkDate(self):  # Проверка текущей даты с датой первого действия по счету (необходимо для сброса TOTAL_INCOME)
 		current_date = date.today()
 		if (self._DateOfFirstAction == 0):
@@ -155,6 +166,15 @@ class ATM:
 			self._DateOfFirstAction = date.today()
 			self._TOTAL_INCOME = 0
 
+def getTimeNow():       # Метод получает время для логов
+	currTime = datetime.now()
+	time = f"{currTime.day}.{currTime.month}.{currTime.year}, {currTime.hour}:{currTime.minute}:{currTime.second}"
+	return time
+def showlogs(): # Метод отображающий логи
+	print("*** История операций: ***")
+	for log in logList:
+		print(f'{log} - {logList[log]}')
+	chooseMenu()
 
 def mainMethod():
 	chooseMenu()
