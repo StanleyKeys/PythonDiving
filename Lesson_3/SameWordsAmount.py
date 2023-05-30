@@ -24,14 +24,15 @@ def countWords(text: list):  # Метод подсчета одинаковых 
 		else:
 			countDict[element] = 1
 
-	"""
-		Можно вернуть отсортированный словарь слов:
-		sortedDict = sorted(countDict.items(), key=lambda tpl: tpl[1], reverse=True) 
-	"""
+
 	return countDict
 
+def sortItemsOfDict(textDict: {}):      # Сортирует словарь по значениям и выводит от большего к меньшему
+	sortedDict = dict(sorted(textDict.items(), key=lambda word: word[1], reverse=True))
+	return sortedDict
 
-def showDict(dict: {}):
+
+def showDict(dict: {}): # Красивый вывод всех слов и их количества в тексте
 	print("*** Список повторных слов ***")
 	for element in dict:
 		pointAmount = 30 - len(element) - 1
@@ -42,7 +43,8 @@ def showDict(dict: {}):
 def mainMethod():  # Главный метод
 	t = clearText(text.lower())
 	result = countWords(t.split())
-	showDict(result)
+	sortedItemResult = sortItemsOfDict(result)
+	showDict(sortedItemResult)
 
 
 mainMethod()
