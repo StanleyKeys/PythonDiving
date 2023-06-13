@@ -1,0 +1,14 @@
+FileName,ParentDirectory,Size
+FileNameChange.py,T:\Important\Projects\pythonProject\PythonDiving\Lesson_7,2803
+FileNameChange.py,T:\Important\Projects\pythonProject\PythonDiving\Lesson_7\file_operations,2803
+FillNumbers.py,T:\Important\Projects\pythonProject\PythonDiving\Lesson_7\file_operations,843
+Multiply_Nums_in_Files.py,T:\Important\Projects\pythonProject\PythonDiving\Lesson_7\file_operations,1434
+__init__.py,T:\Important\Projects\pythonProject\PythonDiving\Lesson_7\file_operations,33
+__init__.cpython-310.pyc,T:\Important\Projects\pythonProject\PythonDiving\Lesson_7\file_operations\__pycache__,209
+firstFile.txt,T:\Important\Projects\pythonProject\PythonDiving\Lesson_7,0
+secondFile.txt,T:\Important\Projects\pythonProject\PythonDiving\Lesson_7,0
+TestPackageApp.py,T:\Important\Projects\pythonProject\PythonDiving\Lesson_7,243
+thirdFile.txt,T:\Important\Projects\pythonProject\PythonDiving\Lesson_7,0
+DirName,FileAmount,Size
+T:\Important\Projects\pythonProject\PythonDiving\Lesson_7,6,4096
+T:\Important\Projects\pythonProject\PythonDiving\Lesson_7\file_operations,5,4096
