@@ -12,7 +12,7 @@ import pickle
 
 dir_path = 'T:\Important\Projects\pythonProject\PythonDiving\Lesson_7'
 
-fileData = {}
+fileData: dict[str, list] = {}
 fileData['Files'] = []
 fileData['Dirs'] = []
 
@@ -90,7 +90,7 @@ def mainMethod():
     saveToCSV()
     saveToPickle()
 
-	# showPickle()
+# showPickle()
 
 
 
