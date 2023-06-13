@@ -55,7 +55,7 @@ def mainMethod():
     create_user_dict()
     userData = loadFromJSON()
     counter = 0
-    while (counter < 1):
+    while (counter < 5):
         getName_ID_Level(userData)
         counter += 1
     print(userData)
