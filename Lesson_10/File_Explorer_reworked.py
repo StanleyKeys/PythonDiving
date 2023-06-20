@@ -1,8 +1,8 @@
 """
-Напишите функцию, которая получает на вход директорию и рекурсивно обходит её и все вложенные директории.
-Результаты обхода сохраните в файлы json, csv и pickle. - Для дочерних объектов указывайте родительскую директорию.
-- Для каждого объекта укажите файл это или директория. - Для файлов сохраните его размер в байтах, а для директорий
-  размер файлов в ней с учётом всех вложенных файлов и директорий.
+РќР°РїРёС€РёС‚Рµ С„СѓРЅРєС†РёСЋ, РєРѕС‚РѕСЂР°СЏ РїРѕР»СѓС‡Р°РµС‚ РЅР° РІС…РѕРґ РґРёСЂРµРєС‚РѕСЂРёСЋ Рё СЂРµРєСѓСЂСЃРёРІРЅРѕ РѕР±С…РѕРґРёС‚ РµС‘ Рё РІСЃРµ РІР»РѕР¶РµРЅРЅС‹Рµ РґРёСЂРµРєС‚РѕСЂРёРё.
+Р РµР·СѓР»СЊС‚Р°С‚С‹ РѕР±С…РѕРґР° СЃРѕС…СЂР°РЅРёС‚Рµ РІ С„Р°Р№Р»С‹ json, csv Рё pickle. - Р”Р»СЏ РґРѕС‡РµСЂРЅРёС… РѕР±СЉРµРєС‚РѕРІ СѓРєР°Р·С‹РІР°Р№С‚Рµ СЂРѕРґРёС‚РµР»СЊСЃРєСѓСЋ РґРёСЂРµРєС‚РѕСЂРёСЋ.
+- Р”Р»СЏ РєР°Р¶РґРѕРіРѕ РѕР±СЉРµРєС‚Р° СѓРєР°Р¶РёС‚Рµ С„Р°Р№Р» СЌС‚Рѕ РёР»Рё РґРёСЂРµРєС‚РѕСЂРёСЏ. - Р”Р»СЏ С„Р°Р№Р»РѕРІ СЃРѕС…СЂР°РЅРёС‚Рµ РµРіРѕ СЂР°Р·РјРµСЂ РІ Р±Р°Р№С‚Р°С…, Р° РґР»СЏ РґРёСЂРµРєС‚РѕСЂРёР№
+  СЂР°Р·РјРµСЂ С„Р°Р№Р»РѕРІ РІ РЅРµР№ СЃ СѓС‡С‘С‚РѕРј РІСЃРµС… РІР»РѕР¶РµРЅРЅС‹С… С„Р°Р№Р»РѕРІ Рё РґРёСЂРµРєС‚РѕСЂРёР№.
 
 """
 import os
@@ -17,7 +17,7 @@ fileData['Files'] = []
 fileData['Dirs'] = []
 
 
-# Сначала создадим базу и получим рекурсивно содержимое всех папок, начиная с dir_path
+# РЎРЅР°С‡Р°Р»Р° СЃРѕР·РґР°РґРёРј Р±Р°Р·Сѓ Рё РїРѕР»СѓС‡РёРј СЂРµРєСѓСЂСЃРёРІРЅРѕ СЃРѕРґРµСЂР¶РёРјРѕРµ РІСЃРµС… РїР°РїРѕРє, РЅР°С‡РёРЅР°СЏ СЃ dir_path
 def createFileData(path, level=1):
     print('Level=', level, 'Content:', os.listdir(path))
     for fileName in os.listdir(path):
@@ -40,19 +40,19 @@ def createFileData(path, level=1):
                 'Size': os.path.getsize(path)
             })
 
-            print('Спускаемся в ', path + '\\' + fileName)
+            print('РЎРїСѓСЃРєР°РµРјСЃСЏ РІ ', path + '\\' + fileName)
             createFileData(path + '\\' + fileName, level + 1)
-            print('Возвращаемся в ', path)
+            print('Р’РѕР·РІСЂР°С‰Р°РµРјСЃСЏ РІ ', path)
 
 
 class Recorder():
-    # Записываем в JSON:
+    # Р—Р°РїРёСЃС‹РІР°РµРј РІ JSON:
     def saveToJSON(self):
         with open("fileData.json", "w", encoding="utf-8") as file:
             json.dump(fileData, file)
             file.close()
 
-    # Записываем в CSV:
+    # Р—Р°РїРёСЃС‹РІР°РµРј РІ CSV:
     def saveToCSV(self):
         with open('fileData.csv', 'w', encoding='utf-8') as csvfile:
             writer = csv.writer(csvfile)
@@ -66,14 +66,14 @@ class Recorder():
                 writer.writerow((dir['DirName'], dir['FileAmount'], dir['Size']))
             csvfile.close()
 
-    # Сохраняем в Pickle:
+    # РЎРѕС…СЂР°РЅСЏРµРј РІ Pickle:
     def saveToPickle(self):
         with open('pickleFileData.data', 'ab') as pickleFile:
             pickle.dump(fileData, pickleFile)
             pickleFile.close()
 
 
-# Отобразить файл Pickle:
+# РћС‚РѕР±СЂР°Р·РёС‚СЊ С„Р°Р№Р» Pickle:
 def showPickle():
     with open('pickleFileData.data', 'rb') as f:
         obj = pickle.load(f)
