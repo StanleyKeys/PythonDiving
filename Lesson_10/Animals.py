@@ -76,10 +76,17 @@ class Cat(Animal):
 
 
 class Factory():
-    nameList = ['Animal1', 'Animal2', 'Animal3', 'Animal4', 'Animal5']
+    nameList = []
+
+    def create_nameList(self):
+        counter = 1
+        while (counter < 50):
+            self.nameList.append(f'Animal-{counter}')
+            counter += 1
 
     def __init__(self, animal_type: str):
         self.animal_type = animal_type
+        self.create_nameList()
 
     def create_animal(self):
         nameNumber = random.randint(0, len(self.nameList) - 1)
