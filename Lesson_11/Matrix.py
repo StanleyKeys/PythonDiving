@@ -32,11 +32,11 @@ class Matrix:
                 if self.matrix[i][j] == old_value:
                     self.matrix[i][j] = new_value
 
-    def compare(self, other):
+    def __eq__(self, other):
         ''' Сравнение двух матриц. НЕ равны если разные элементы и если разный размер. '''
         return 'Матрицы равны' if self.matrix == other.matrix else 'Матрицы не равны'
 
-    def sum_matrix(self, other):
+    def __add__(self, other):
         ''' Сложение двух матриц '''
         a = len(self.matrix) if len(self.matrix) >= len(other.matrix) else len(other.matrix)
         temp = Matrix(a, a)
@@ -45,7 +45,7 @@ class Matrix:
                 temp.matrix[i][j] = self.matrix[i][j] + other.matrix[i][j]
         return temp
 
-    def multiply_matrix(self, other):
+    def __mul__(self, other):
         ''' Умножение элементов двух матриц '''
         a = len(self.matrix) if len(self.matrix) >= len(other.matrix) else len(other.matrix)
         temp = Matrix(a, a)
@@ -69,12 +69,12 @@ if __name__ == '__main__':
     # m.replaceAll(5, 7)
     m2.show()
     print()
-    print(f'm1 & m2 : {m1.compare(m2)}')
+    print(f'm1 & m2 : {m1.__eq__(m2)}')
     print()
     print('m3: sum m1 & m2')
-    m3 = m1.sum_matrix(m2)
+    m3 = m1.__add__(m2)
     m3.show()
     print()
     print('m4: multi m1 & m2')
-    m4 = m1.multiply_matrix(m2)
+    m4 = m1.__mul__(m2)
     m4.show()
