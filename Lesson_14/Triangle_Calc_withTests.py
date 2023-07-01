@@ -84,3 +84,4 @@ def checkTriangleForm(a, b, c):  # Проверка формы треуголь�
 if __name__ == '__main__':
     doctest.testmod(verbose=True)
     unittest.main(verbosity=2)
+    pytest.main(['-v'])
