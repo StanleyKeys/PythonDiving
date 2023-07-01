@@ -4,8 +4,10 @@
 """
 import doctest
 import unittest
+import pytest
 
 
+# Класс-функция unitTest
 class MyTest(unittest.TestCase):
 
     def test_type(self):
@@ -13,6 +15,14 @@ class MyTest(unittest.TestCase):
             fib("HelloWorld")
             fib(3.14)
             userInput('Hello World')
+
+
+# Функция модуля pyTest
+def test_pytype():
+    with pytest.raises(TypeError):
+        fib("HelloWorld")
+        fib(3.14)
+        userInput('Hello World')
 
 
 def userInput(userEnter):  # Ввод
@@ -49,5 +59,5 @@ def fib(userNumber):  # Метод вычисления порядка Фибо�
 
 
 if __name__ == '__main__':
-    # doctest.testmod(verbose=True)
+    doctest.testmod(verbose=True)
     unittest.main(verbosity=2)

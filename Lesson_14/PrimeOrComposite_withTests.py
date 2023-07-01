@@ -7,8 +7,10 @@
 
 import doctest
 import unittest
+import pytest
 
 
+# Класс-функция unitTest
 class MyTest(unittest.TestCase):
 
     def test_type(self):
@@ -18,6 +20,7 @@ class MyTest(unittest.TestCase):
 
     def test_value(self):
         self.assertRaises(ValueError, checkPrimeOrComposite, -1)
+
 
 def checkPrimeOrComposite(value):  # Проверка на Простоту
     '''
@@ -42,11 +45,24 @@ def checkPrimeOrComposite(value):  # Проверка на Простоту
             if (value % i == 0):
                 k = k + 1
         if (k <= 0):
-            print(f'Your number "{value}" is Prime')
+            return f'Your number "{value}" is Prime'
         else:
-            print(f'Your number "{value}" is Composite')
+            return f'Your number "{value}" is Composite'
     else:
         raise ValueError('Your number must be between 1 and 100k')
+
+
+# Функция модуля pyTest
+def test_pytype():
+    with pytest.raises(TypeError):
+        checkPrimeOrComposite(3.14)
+        checkPrimeOrComposite('dsfgdgdfg')
+
+
+# Функция модуля pyTest
+def test_value():
+    with pytest.raises(ValueError):
+        checkPrimeOrComposite(-1)
 
 
 if __name__ == '__main__':

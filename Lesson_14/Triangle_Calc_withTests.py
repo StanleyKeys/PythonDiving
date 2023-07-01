@@ -8,8 +8,9 @@
 """
 import doctest
 import unittest
+import pytest
 
-
+# Класс-функция unitTest
 class MyTest(unittest.TestCase):
 
     def test_type(self):
@@ -21,6 +22,20 @@ class MyTest(unittest.TestCase):
         self.assertEqual(checkTriangleForm(10, 5, 2), 'Triangle is VERSATILE')
         self.assertEqual(checkTriangleForm(5, 5, 5), 'Triangle is EQUILATERAL')
         self.assertEqual(checkTriangleForm(5, 5, 7), 'Triangle is ISOSCELES')
+
+
+# Функция модуля pyTest
+def test_pytype():
+    with pytest.raises(TypeError):
+        checkTriangleForm("a", "b", "c")
+        userInput("HelloWorld")
+
+
+# Функция модуля pyTest
+def test_pytest_triangle_form():
+    assert checkTriangleForm(10, 5, 2), 'Triangle is VERSATILE'
+    assert checkTriangleForm(5, 5, 5), 'Triangle is EQUILATERAL'
+    assert checkTriangleForm(5, 5, 7), 'Triangle is ISOSCELES'
 
 
 def userInput(userEnter):  # Ввод сторон пользователем
@@ -44,7 +59,6 @@ def checkSides(a, b, c):  # Проверка сторон на существу�
 
 def checkTriangleForm(a, b, c):  # Проверка формы треугольника
     '''
-
     >>> checkTriangleForm("a", "b", "c")
     Traceback (most recent call last):
     ...
