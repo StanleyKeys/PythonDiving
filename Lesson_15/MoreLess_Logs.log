@@ -1,0 +1,18 @@
+2023-07-06 15:14:56,898 INFO The Game is starting
+2023-07-06 15:14:56,898 INFO AI number is "378"
+2023-07-06 15:14:56,898 INFO The user has 10 tries
+2023-07-06 15:14:59,626 INFO The user entered 300
+2023-07-06 15:14:59,626 INFO User's number is less than AI
+2023-07-06 15:14:59,626 INFO The user has 9 tries
+2023-07-06 15:15:02,186 INFO The user entered 500
+2023-07-06 15:15:02,186 INFO User's number is bigger than AI
+2023-07-06 15:15:02,186 INFO The user has 8 tries
+2023-07-06 15:15:04,314 INFO The user entered 400
+2023-07-06 15:15:04,314 INFO User's number is bigger than AI
+2023-07-06 15:15:04,314 INFO The user has 7 tries
+2023-07-06 15:15:08,746 INFO The user entered 370
+2023-07-06 15:15:08,746 INFO User's number is less than AI
+2023-07-06 15:15:08,746 INFO The user has 6 tries
+2023-07-06 15:15:17,985 ERROR The user entered "Hello World"
+2023-07-06 15:15:17,985 INFO The user entered 378
+2023-07-06 15:15:17,986 INFO The user guessed right the number and finished the game
