@@ -8,6 +8,7 @@ num = randint(LOWER_LIMIT, UPPER_LIMIT)
 """
 import random
 import logging
+import argparse
 
 
 def userInput():  # Ввод
@@ -48,9 +49,19 @@ if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO, filename="MoreLess_Logs.log", filemode="w",
                         format="%(asctime)s %(levelname)s %(message)s")
 
+    parser = argparse.ArgumentParser(description="SameWord_argument parser")
+    parser.add_argument('param', type=str, nargs='*', help='enter filename after the command')
+    args = parser.parse_args()
+    print(args.param)
+
+    if len(args.param) > 0:
+        tries = args.param[0]
+    else:
+        tries = 10
+
     print("Hello! Im J.A.R.V.I.S! \nTry to beat me!")
     num = random.randint(0, 1000)
-    tries = 10
+
     print(num)
     logging.info("The Game is starting")
     logging.info(f'AI number is "{num}"')

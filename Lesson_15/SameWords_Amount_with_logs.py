@@ -4,6 +4,7 @@
 Не учитывать знаки препинания и регистр символов.
 За основу возьмите любую статью из википедии или из документации к языку.
 """
+import argparse
 import logging
 
 text = "Викинги - раннесредневековые скандинавские мореходы в VIII—XI веках, совершавшие морские походы от Винланда " \
@@ -47,6 +48,22 @@ def showDict(dict: {}):  # Красивый вывод всех слов и их
     logging.info(f'The dict is: {dict}')
 
 
+def saveToFile(dict: {}, params: []):
+    with open(f"{params[0]}", 'w') as file:
+        file.write(
+            f"Исходный текст: \n"
+            f"{text} \n\n"
+            f"Подсчитанные слова: \n"
+        )
+        for element in dict:
+            pointAmount = 30 - len(element) - 1
+            pointAdd = pointAmount * '.'
+            file.write(f'{element}{pointAdd}{dict[element]}\n')
+        print("File successfully created")
+        file.close()
+        logging.info(f'Result added to {params[0]}')
+
+
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO, filename="SameWords_Amount.log", filemode="w",
                         format="%(asctime)s %(levelname)s %(message)s")
@@ -54,4 +71,14 @@ if __name__ == '__main__':
     t = clearText(text.lower())
     result = countWords(t.split())
     sortedItemResult = sortItemsOfDict(result)
-    showDict(sortedItemResult)
+    # showDict(sortedItemResult)
+
+    parser = argparse.ArgumentParser(description="SameWord_argument parser")
+    parser.add_argument('param', type=str, nargs='*', help='enter filename after the command')
+    args = parser.parse_args()
+    print(args.param)
+
+    if len(args.param) > 0:
+        saveToFile(sortedItemResult, args.param)
+    else:
+        showDict(sortedItemResult)

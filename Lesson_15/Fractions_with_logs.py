@@ -4,6 +4,7 @@
 Программа должна возвращать сумму и произведение* дробей. Для проверки своего кода используйте модуль fractions.
 """
 import logging
+import argparse
 
 
 def userInput():  # Ввод
@@ -40,6 +41,7 @@ def multiplyFractions(a, b, aMark, bMark):  # Метод умножения др
 
 
 def chooseAction(a, b):  # Выбор действия
+    global userChoice
     choice = input("Choose action with fractions:\n"
                    "1. Summ\n"
                    "2. Multiply\n")
@@ -48,8 +50,10 @@ def chooseAction(a, b):  # Выбор действия
     match (choice):
         case "1":
             logging.info('MAIN_MENU: The user chose 1')
+            userChoice = 'summ'
             return sumFraction(a, b, aMark, bMark)
         case "2":
+            userChoice = 'Multiply'
             logging.info('MAIN_MENU: The user chose 2')
             return multiplyFractions(a, b, aMark, bMark)
 
@@ -61,11 +65,33 @@ def checkNegative(fraction):
         return 1
 
 
+def saveToFile(a, b, result, params):
+    with open(f"{params[0]}", 'w') as file:
+        file.write(
+            f'{a = }\n'
+            f'{b = }\n'
+            f'{userChoice = }\n'
+            f'{result = }\n'
+        )
+        file.close()
+        print("File successfully created")
+        file.close()
+        logging.info(f'Result added to {params[0]}')
+
+
 if __name__ == '__main__':
     logging.basicConfig(level=logging.INFO, filename="Fractions_logs.log", filemode="w",
                         format="%(asctime)s %(levelname)s %(message)s")
+
+    parser = argparse.ArgumentParser(description="SameWord_argument parser")
+    parser.add_argument('param', type=str, nargs='*', help='enter filename after the command')
+    args = parser.parse_args()
+
     a = userInput()
     b = userInput()
-
     c = chooseAction(a, b)
-    print(f'Your answer is: {c}')
+
+    if len(args.param) > 0:
+        saveToFile(a, b, c, args.param)
+    else:
+        print(f'Your answer is: {c}')
