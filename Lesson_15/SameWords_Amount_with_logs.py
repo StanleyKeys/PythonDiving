@@ -74,11 +74,11 @@ if __name__ == '__main__':
     # showDict(sortedItemResult)
 
     parser = argparse.ArgumentParser(description="SameWord_argument parser")
-    parser.add_argument('param', type=str, nargs='*', help='enter filename after the command')
+    parser.add_argument('params', type=str, nargs='*', help='enter filename after the command')
     args = parser.parse_args()
-    print(args.param)
+    print(args.params)
 
-    if len(args.param) > 0:
-        saveToFile(sortedItemResult, args.param)
+    if len(args.params) > 0:
+        saveToFile(sortedItemResult, args.params)
     else:
         showDict(sortedItemResult)

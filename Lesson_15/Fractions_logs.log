@@ -1,6 +1,6 @@
-2023-07-07 17:51:10,715 INFO The User entered 2/5
-2023-07-07 17:51:11,748 INFO The User entered 1/2
-2023-07-07 17:51:12,740 INFO MAIN_MENU: The user chose 1
-2023-07-07 17:51:12,740 INFO Starting sum_fraction method...
-2023-07-07 17:51:12,740 INFO Fraction 2/5 + Fraction 1/2 = 9/10
-2023-07-07 17:51:12,741 INFO Result added to fractions_test.txt
+2023-07-07 17:59:44,924 INFO The User entered 2/5
+2023-07-07 17:59:46,179 INFO The User entered 1/2
+2023-07-07 17:59:47,163 INFO MAIN_MENU: The user chose 1
+2023-07-07 17:59:47,163 INFO Starting sum_fraction method...
+2023-07-07 17:59:47,163 INFO Fraction 2/5 + Fraction 1/2 = 9/10
+2023-07-07 17:59:47,164 INFO Result added to fractions_test.txt
